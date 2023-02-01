@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-board">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+        <div class="turn-display">
+          <p>It's X's turn</p>
+        </div>
+      </div>
+      
+
+<script>
+const cells = document.querySelectorAll('.cell');
+const turnDisplay = document.querySelector('.turn-display p');
+let xIsNext = true;
+
+for (const cell of cells) {
+  cell.addEventListener('click', handleClick);
+}
+
+function handleClick(e) {
+  const cell = e.target;
+  const cellValue = cell.getAttribute('data-value');
+
+  if (!cellValue) {
+    const value = xIsNext ? 'X' : 'O';
+    cell.setAttribute('data-value', value);
+    xIsNext = !xIsNext;
+    turnDisplay.textContent = `It's ${xIsNext ? 'X' : 'O'}'s turn`;
+  }
+}
+
+  </script>
+
+</body>
+</html>
